@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos</title>
+</head>
+<body>
+    <h1>Equipos de Fútbol</h1>
+    <div>
+        <a href="{% url 'nuevoEquipo' %}">Nuevo Equipo</a>
+    </div>
+
+    <div>
+        Número de Equipos:
+        {{no_equipos}}
+    </div>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Ciudad
+                    </th>
+                    <th>
+                        Títulos
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for equipo in equipos %}
+                <tr>
+                    <td>
+                        {{ equipo.id }}
+                    </td>
+                    <td>
+                        {{ equipo.nombre }}
+                    </td>
+                    <td>
+                        {{ equipo.ciudad }}
+                    </td>
+                    <td>
+                        {{ equipo.titulos }}
+                    </td>
+                    <td><a href="{% url 'editarEquipo' equipo.id %}">Editar</a></td>
+                    <td><a href="{% url 'eliminarEquipo' equipo.id %}">Eliminar</a></td>
+                    
+                </tr>
+                   
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+
+    <a href="{% url 'equipos' %}">Home</a>
+    
+</body>
+</html>
